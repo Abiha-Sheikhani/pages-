@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In Page</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+  body, html {
+    height: 100%;
+    margin: 0;
+    background-color: #ffe6e6;
+  }
+
+  /* ✅ Logo Styling */
+  .logo {
+    padding: 20px 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+  }
+  .logo img {
+    height: 20px; 
+    width: auto;
+  }
+
+  /* Form container */
+  .form-container {
+    background: #fff;
+    padding: 32px;
+    border-radius: 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 420px;
+    position: relative;
+    z-index: 10;
+    margin-right: -65px;
+  }
+  .form-container h1 {
+    font-weight: bold;
+    font-size: 1.65rem;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  .form-container p {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  /* Inputs + Buttons */
+  .form-control,
+  .btn-full,
+  .btn-google {
+    width: 100%;
+    margin: 0 auto;
+    height: 36px; 
+    font-size: 0.9rem;
+  }
+  .btn-primary {
+    background-color: #ff3399;
+    border: none;
+  }
+  .btn-primary:hover {
+    background-color: #e60073;
+  }
+
+  /* Google button */
+  .btn-google {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid #ccc;
+    background: #fff;
+    font-size: 0.9rem;
+  }
+  .btn-google img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .divider {
+    text-align: center;
+    margin: 15px 0;
+    color: #999;
+    position: relative;
+    font-size: 0.85rem;
+  }
+  .divider::before, .divider::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 38%;
+    height: 1px;
+    background: #ccc;
+  }
+  .divider::before { left: 0; }
+  .divider::after { right: 0; }
+
+  .form-footer {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.85rem;
+  }
+  .form-footer a {
+    color: #e60073;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .right-img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+  }
+
+  /* Full height row */
+  .full-height {
+    min-height: 100vh;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 991px) {
+    .col-md-5, .col-md-7 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+    .form-container {
+      margin: 80px 20px;
+    }
+    .right-img {
+      display: none; /* hide image on smaller screens */
+    }
+  }
+
+  @media (max-width: 576px) {
+    .logo img {
+      height: 40px;
+    }
+    .form-container {
+      padding: 20px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ✅ Logo at Top -->
+<div class="logo">
+  <img src="images/WedWise Logo_page-0004 1_layerstyle.png" alt="Logo">
+</div>
+
+<div class="container-fluid h-100">
+  <div class="row h-100">
+    <!-- Left Side Form -->
+    <div class="col-md-5 d-flex align-items-center justify-content-end">
+      <div class="form-container">
+        <h1 class="mb-2">Sign In</h1>
+        <p>Access your wedding plans instantly!</p>
+
+        <form id="signinForm" class="d-flex flex-column gap-3">
+          <!-- Name Input Added -->
+          <input type="text" id="name" placeholder="Name" class="form-control" required>
+          <input type="email" id="email" placeholder="Email" class="form-control" required>
+          <input type="password" id="password" placeholder="Password" class="form-control" required>
+
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="savePassword">
+              <label class="form-check-label" for="savePassword">Save Account</label>
+            </div>
+            <a href="#" class="text-muted small">Forgot Password?</a>
+          </div>
+
+          <!-- SIGN IN button -->
+          <button type="submit" class="btn btn-primary btn-full">SIGN IN</button>
+        </form>
+
+        <div class="divider">OR</div>
+
+        <!-- Google button -->
+        <button id="googleBtn" class="btn btn-google btn-full">
+          <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google">
+          Sign in with Google
+        </button>
+
+        <div class="form-footer">
+          Don’t have an account? <a href="#">Sign Up</a>
+        </div>
+        <a href="login.html">login</a>
+  <a href="new password.html">Log In</a>
+
+
+        <p id="message" class="mt-2 text-danger text-center small"></p>
+      </div>
+    </div>
+
+    <!-- Right Side Image -->
+    <div class="col-md-7 d-none d-md-block p-0">
+      <img src="images/image.png" alt="Background" class="right-img">
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // Dummy Google Login
+  document.getElementById('googleBtn').addEventListener('click', () => {
+    alert("Google Login clicked (Dummy, frontend only)");
+  });
+
+  // Sign In form handling
+  document.getElementById('signinForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const messageEl = document.getElementById('message');
+
+    if(password.length < 6){
+      messageEl.textContent = "Password must be at least 6 characters";
+      messageEl.classList.remove('text-success');
+      messageEl.classList.add('text-danger');
+      return;
+    }
+
+    let users = JSON.parse(localStorage.getItem('users') || '[]');
+    const user = users.find(u => u.email === email && u.password === password && u.name === name);
+    if(user){
+      messageEl.textContent = "Login successful!";
+      messageEl.classList.remove('text-danger');
+      messageEl.classList.add('text-success');
+    } else {
+      messageEl.textContent = "Invalid name, email, or password";
+      messageEl.classList.remove('text-success');
+      messageEl.classList.add('text-danger');
+    }
+  });
+</script>
+
+
+
+
+</body>
+</html>
