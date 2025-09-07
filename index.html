@@ -14,7 +14,7 @@
 
   /* ✅ Logo Styling */
   .logo {
-    padding: 20px 100px;
+    padding: 20px;
     position: absolute;
     top: 0;
     left: 0;
@@ -23,6 +23,15 @@
   .logo img {
     height: 20px; 
     width: auto;
+  }
+
+  /* Main container */
+  .main-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px 20px;
   }
 
   /* Form container */
@@ -35,7 +44,6 @@
     max-width: 420px;
     position: relative;
     z-index: 10;
-    margin-right: -65px;
   }
   .form-container h1 {
     font-weight: bold;
@@ -116,19 +124,11 @@
     object-fit: cover;
   }
 
-  /* Full height row */
-  .full-height {
-    min-height: 100vh;
-  }
-
   /* Responsive adjustments */
   @media (max-width: 991px) {
-    .col-md-5, .col-md-7 {
-      flex: 0 0 100%;
-      max-width: 100%;
-    }
     .form-container {
-      margin: 80px 20px;
+      margin: 0 auto;
+      max-width: 400px;
     }
     .right-img {
       display: none; /* hide image on smaller screens */
@@ -136,11 +136,31 @@
   }
 
   @media (max-width: 576px) {
+    .logo {
+      padding: 15px;
+    }
     .logo img {
-      height: 40px;
+      height: 16px;
     }
     .form-container {
-      padding: 20px;
+      padding: 25px 20px;
+    }
+    .form-container h1 {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .logo {
+      text-align: center;
+      position: relative;
+      padding: 15px 0;
+    }
+    .main-container {
+      padding-top: 20px;
+    }
+    .form-container {
+      box-shadow: none;
     }
   }
 </style>
@@ -149,99 +169,61 @@
 
 <!-- ✅ Logo at Top -->
 <div class="logo">
-  <img src="images/WedWise Logo_page-0004 1_layerstyle.png" alt="Logo">
+<h1>  <img src="images/WedWise Logo_page-0004 1_layerstyle.png" alt="Logo"></h1>
 </div>
 
-<div class="container-fluid h-100">
-  <div class="row h-100">
+<div class="container-fluid">
+  <div class="row">
     <!-- Left Side Form -->
-    <div class="col-md-5 d-flex align-items-center justify-content-end">
-      <div class="form-container">
-        <h1 class="mb-2">Sign In</h1>
-        <p>Access your wedding plans instantly!</p>
+    <div class="col-12 col-lg-5">
+      <div class="main-container">
+        <div class="form-container">
+          <h1 class="mb-2">Sign In</h1>
+          <p>Access your wedding plans instantly!</p>
 
-        <form id="signinForm" class="d-flex flex-column gap-3">
-          <!-- Name Input Added -->
-          <input type="text" id="name" placeholder="Name" class="form-control" required>
-          <input type="email" id="email" placeholder="Email" class="form-control" required>
-          <input type="password" id="password" placeholder="Password" class="form-control" required>
+          <form id="signinForm" class="d-flex flex-column gap-3">
+            <!-- Name Input Added -->
+            <input type="text" id="name" placeholder="Name" class="form-control" required>
+            <input type="email" id="email" placeholder="Email" class="form-control" required>
+            <input type="password" id="password" placeholder="Password" class="form-control" required>
 
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="savePassword">
-              <label class="form-check-label" for="savePassword">Save Account</label>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="savePassword">
+                <label class="form-check-label" for="savePassword">Save Account</label>
+              </div>
+              <a href="password.html" class="text-muted small">Forgot Password?</a>
             </div>
-            <a href="#" class="text-muted small">Forgot Password?</a>
+
+            <!-- SIGN IN button -->
+            <button type="submit" class="btn btn-primary btn-full">SIGN IN</button>
+          </form>
+
+          <div class="divider">OR</div>
+
+          <!-- Google button -->
+          <button id="googleBtn" class="btn btn-google btn-full">
+            <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google">
+            Sign in with Google
+          </button>
+
+          <div class="form-footer">
+            Already have an account? <a href="login.html">Log in</a>
           </div>
 
-          <!-- SIGN IN button -->
-          <button type="submit" class="btn btn-primary btn-full">SIGN IN</button>
-        </form>
-
-        <div class="divider">OR</div>
-
-        <!-- Google button -->
-        <button id="googleBtn" class="btn btn-google btn-full">
-          <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google">
-          Sign in with Google
-        </button>
-
-        <div class="form-footer">
-          Don’t have an account? <a href="#">Sign Up</a>
+          <p id="message" class="mt-2 text-danger text-center small"></p>
         </div>
-        <a href="login.html">login</a>
-  <a href="new password.html">Log In</a>
-
-
-        <p id="message" class="mt-2 text-danger text-center small"></p>
       </div>
     </div>
 
     <!-- Right Side Image -->
-    <div class="col-md-7 d-none d-md-block p-0">
+    <div class="col-lg-7 d-none d-lg-block p-0">
       <img src="images/image.png" alt="Background" class="right-img">
     </div>
   </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-  // Dummy Google Login
-  document.getElementById('googleBtn').addEventListener('click', () => {
-    alert("Google Login clicked (Dummy, frontend only)");
-  });
-
-  // Sign In form handling
-  document.getElementById('signinForm').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const messageEl = document.getElementById('message');
-
-    if(password.length < 6){
-      messageEl.textContent = "Password must be at least 6 characters";
-      messageEl.classList.remove('text-success');
-      messageEl.classList.add('text-danger');
-      return;
-    }
-
-    let users = JSON.parse(localStorage.getItem('users') || '[]');
-    const user = users.find(u => u.email === email && u.password === password && u.name === name);
-    if(user){
-      messageEl.textContent = "Login successful!";
-      messageEl.classList.remove('text-danger');
-      messageEl.classList.add('text-success');
-    } else {
-      messageEl.textContent = "Invalid name, email, or password";
-      messageEl.classList.remove('text-success');
-      messageEl.classList.add('text-danger');
-    }
-  });
-</script>
-
-
 
 
 </body>
